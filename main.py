@@ -5,7 +5,7 @@ from playwright.async_api import async_playwright
 
 URL = "https://www.binance.com/pt-BR/trade/SOL_USDT?type=spot"
 INTERVAL_SECONDS = 1
-TIMEZONE=-4
+TIMEZONE=0
 
 async def run(page):
     await page.goto(URL, wait_until="domcontentloaded")
