@@ -1,10 +1,11 @@
 import asyncio
 import re
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 from playwright.async_api import async_playwright
 
 URL = "https://www.binance.com/pt-BR/trade/SOL_USDT?type=spot"
 INTERVAL_SECONDS = 1
+TIMEZONE=-4
 
 async def run(page):
     await page.goto(URL, wait_until="domcontentloaded")
@@ -24,6 +25,6 @@ async def main():
             await asyncio.sleep(INTERVAL_SECONDS)
 
 def current_time():
-    return datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+    return datetime.now(timezone(timedelta(hours=TIMEZONE))).strftime("%d/%m/%Y %H:%M:%S %Z")
 
 asyncio.run(main())
