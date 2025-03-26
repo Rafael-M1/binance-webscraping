@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  playwright-bot:
+    build: .
+    container_name: playwright-bot
+    restart: always  # Reinicia automaticamente se parar
+    environment:
+      - PYTHONUNBUFFERED=1  # Garante logs em tempo real
+    volumes:
+      - ./logs:/app/logs  # (Opcional) Monta um volume para armazenar logs
+    deploy:
+      resources:
+        limits:
+          memory: 512M  # Limita o uso de memória
